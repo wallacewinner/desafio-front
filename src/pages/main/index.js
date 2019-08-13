@@ -4,19 +4,30 @@ import api from '../../services/api';
 export default class Main extends Component {
     state = {
         email: '',
+        auth: false,
     }
 
     handleChange = event => {
         this.setState({email: event.target.value});
     }
 
-    login = event => {
+    login = async (event) => {
         event.preventDefault();
-
-        api.post('/signup',{ email: this.state.email } )
-        .then(response => {
-            console.log(response);
-        })
+        try {
+            const response = await api.post('/signup',{ email: this.state.email });
+            console.log(response.data);  
+        } catch (error) {
+            if (error.response) {
+                // Request made and server responded
+                console.log(error.response.status);
+            }else if (error.request) {
+                // The request was made but no response was received
+                console.log(error.request);
+            }else {
+                // Something happened in setting up the request that triggered an Error
+                console.log('Error', error.message);
+            }
+        }
     };
     
     render(){
