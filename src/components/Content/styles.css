@@ -1,0 +1,10 @@
+content#main-content{
+    height: 300px;
+    width: 100%;
+    background: #be8080;
+    font-size: 10px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
