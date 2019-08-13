@@ -7,6 +7,10 @@ export default class Main extends Component {
         auth: false,
     }
 
+    componentDidMount() {
+        console.log (this.state.auth);
+    }    
+
     handleChange = event => {
         this.setState({email: event.target.value});
     }
@@ -15,6 +19,10 @@ export default class Main extends Component {
         event.preventDefault();
         try {
             const response = await api.post('/signup',{ email: this.state.email });
+            if (response) {
+                this.setState({auth: true });
+            }
+            console.log(this.state.auth);
             console.log(response.data);  
         } catch (error) {
             if (error.response) {
@@ -34,7 +42,6 @@ export default class Main extends Component {
         return (
             <form onSubmit={this.login} >
                 <input id='email' name='email' onChange={this.handleChange} />
-
                 <input type='submit' value='enviar' />
             </form>
         )
