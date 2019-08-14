@@ -8,7 +8,7 @@ import Main from './pages/main';
 const App = () => (
   <div className="App">
     <Header />
-    <Main />
+    <Routes />
   </div>
 );
 
