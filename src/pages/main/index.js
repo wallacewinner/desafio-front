@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import api from '../../services/api';
-import {login, getToken} from '../../services/auth';
+import {login, getToken, redirectAuth} from '../../services/auth';
 
 export default class Main extends Component {
     state = {
-        email: '',
-        auth: false,
+        email: ''
     }
 
     componentDidMount() {
-        console.log (this.state.auth);
+        redirectAuth();
     }    
 
     handleChange = event => {
@@ -21,12 +20,10 @@ export default class Main extends Component {
         try {
             const response = await api.post('/signup',{ email: this.state.email });
             if (response) {
-                this.setState({auth: true });
                 login(response.data.user.token);
+                redirectAuth();
             }
-            console.log(this.state.auth);
-            console.log(getToken());
-            
+                        
         } catch (error) {
             if (error.response) {
                 // Request made and server responded
