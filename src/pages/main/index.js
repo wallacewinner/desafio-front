@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import api from '../../services/api';
+import {login, getToken} from '../../services/auth';
 
 export default class Main extends Component {
     state = {
@@ -21,9 +22,11 @@ export default class Main extends Component {
             const response = await api.post('/signup',{ email: this.state.email });
             if (response) {
                 this.setState({auth: true });
+                login(response.data.user.token);
             }
             console.log(this.state.auth);
-            console.log(response.data);  
+            console.log(getToken());
+            
         } catch (error) {
             if (error.response) {
                 // Request made and server responded
