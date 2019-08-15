@@ -9,7 +9,7 @@ export const login = token => {
 
 export const logout = () => {
   localStorage.removeItem(TOKEN_KEY);
-  console.log(isAuthenticated());
+  window.location.href = '/';
 };
 
 export const redirectAuth = () => {
