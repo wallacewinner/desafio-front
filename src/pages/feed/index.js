@@ -1,11 +1,13 @@
 import React, { Component } from  'react';
 import api from '../../services/api';
 import {getToken, redirectAuth} from '../../services/auth';
+import { list } from 'postcss';
 
 
 export default class Feed extends Component {
     state = {
-        listImages: []
+        listImages: [],
+        category: ''
     }
     
     componentDidMount() {
@@ -16,8 +18,9 @@ export default class Feed extends Component {
     getImages = async () => {
         try {
             const response = await api.get('/feed', {headers: {Authorization: getToken()}})
-            this.setState({listImages: response});
-            console.log(response);
+            this.setState({listImages: response.data.list});
+            this.setState({category: response.data.category});
+            console.log(this.state.listImages);
         } catch (error) {
             if (error.response) {
                 // Request made and server responded
@@ -35,7 +38,11 @@ export default class Feed extends Component {
     render(){
         return (
             <React.Fragment>
-                <h1>Feed</h1>
+                <div className="image-list">
+                    {this.state.listImages.map((image, index) => (
+                        <h2 key={index}>{image}</h2>
+                    ))}
+                </div>
             </React.Fragment>
         )
     }
