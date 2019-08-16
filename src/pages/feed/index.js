@@ -6,7 +6,7 @@ export default class Feed extends Component {
 
     state = {
         listImages: [],
-        responseInfo: {}
+        responseInfo: {},
     }
     
     componentDidMount() {
@@ -18,13 +18,18 @@ export default class Feed extends Component {
         console.log ('teste foi!!!');
     }
 
-    getImages = async (page = "husky") => {
+    handleChange = event => {
+        this.setState({category: event.target.value});
+        this.getImages(event.target.value);
+    }
+
+    getImages = async (page="") => {
         try {
             const response = await api.get(`/feed?category=${page}`, {headers: {Authorization: getToken()}})
 
             this.setState({listImages: response.data.list});
             this.setState({category: response.data.category});
-            //console.log(this.state.listImages);
+            console.log(this.state.category);
             
         } catch (error) {
             if (error.response) {
@@ -46,15 +51,17 @@ export default class Feed extends Component {
                 <div>
                     <nav>
                         <ul>
-                        <li><button onClick={this.teste}>Pug</button></li>
-                        <li><a href="#">Sobre</a></li>
-                        <li><a href="#">Contato</a></li>
+                        <li><button onClick={this.handleChange} value='husky'>Husky</button></li>
+                        <li><button onClick={this.handleChange} value='labrador'>Labrador</button></li>
+                        <li><button onClick={this.handleChange} value='hound'>Hound</button></li>
+                        <li><button onClick={this.handleChange} value='pug'>Pug</button></li>
                         </ul>
                     </nav>
                 </div>
                 <div className="image-list">
                     {this.state.listImages.map((image, index) => (
-                        <h2 key={index}>{image}</h2>
+                        //<img key={index} src={image} />
+                        <input key={index} value={image} />
                     ))}
                 </div>
             </React.Fragment>
