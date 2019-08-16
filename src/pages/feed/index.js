@@ -1,13 +1,12 @@
 import React, { Component } from  'react';
 import api from '../../services/api';
 import {getToken, redirectAuth} from '../../services/auth';
-import { list } from 'postcss';
-
 
 export default class Feed extends Component {
+
     state = {
         listImages: [],
-        category: ''
+        responseInfo: {}
     }
     
     componentDidMount() {
@@ -15,12 +14,18 @@ export default class Feed extends Component {
        this.getImages();
     }    
 
-    getImages = async () => {
+    teste = () => {
+        console.log ('teste foi!!!');
+    }
+
+    getImages = async (page = "husky") => {
         try {
-            const response = await api.get('/feed', {headers: {Authorization: getToken()}})
+            const response = await api.get(`/feed?category=${page}`, {headers: {Authorization: getToken()}})
+
             this.setState({listImages: response.data.list});
             this.setState({category: response.data.category});
-            console.log(this.state.listImages);
+            //console.log(this.state.listImages);
+            
         } catch (error) {
             if (error.response) {
                 // Request made and server responded
@@ -38,6 +43,15 @@ export default class Feed extends Component {
     render(){
         return (
             <React.Fragment>
+                <div>
+                    <nav>
+                        <ul>
+                        <li><button onClick={this.teste}>Pug</button></li>
+                        <li><a href="#">Sobre</a></li>
+                        <li><a href="#">Contato</a></li>
+                        </ul>
+                    </nav>
+                </div>
                 <div className="image-list">
                     {this.state.listImages.map((image, index) => (
                         <h2 key={index}>{image}</h2>
