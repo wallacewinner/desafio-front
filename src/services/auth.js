@@ -12,16 +12,3 @@ export const logout = () => {
   window.location.href = '/';
 };
 
-export const redirectAuth = () => {
-  if (isAuthenticated()) {
-    console.log('autenticado');
-    console.log(getToken());
-    if (window.location.pathname !== '/feed')
-      window.location.href = '/feed';
-  } else {
-    console.log('nao_autenticado');
-    console.log(getToken());
-    if (window.location.pathname !== '/')
-      window.location.href = '/';
-  }
-}

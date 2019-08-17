@@ -1,6 +1,6 @@
 import React, { Component } from  'react';
 import api from '../../services/api';
-import {getToken, redirectAuth} from '../../services/auth';
+import {getToken} from '../../services/auth';
 
 export default class Feed extends Component {
 
@@ -10,8 +10,7 @@ export default class Feed extends Component {
     }
     
     componentDidMount() {
-       redirectAuth();
-       this.getImages();
+        this.getImages();
     }    
 
     teste = () => {
@@ -61,7 +60,7 @@ export default class Feed extends Component {
                 <div className="image-list">
                     {this.state.listImages.map((image, index) => (
                         //<img key={index} src={image} />
-                        <input key={index} value={image} />
+                        <input key={index} defaultValue={image} />
                     ))}
                 </div>
             </React.Fragment>

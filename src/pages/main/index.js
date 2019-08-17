@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import api from '../../services/api';
-import {login, getToken, redirectAuth} from '../../services/auth';
+import {login} from '../../services/auth';
 
 export default class Main extends Component {
     state = {
@@ -8,7 +8,7 @@ export default class Main extends Component {
     }
 
     componentDidMount() {
-        redirectAuth();
+
     }    
 
     handleChange = event => {
@@ -21,7 +21,8 @@ export default class Main extends Component {
             const response = await api.post('/signup',{ email: this.state.email });
             if (response) {
                 login(response.data.user.token);
-                redirectAuth();
+                window.location.href = '/feed';
+                //redirectAuth();
             }
                         
         } catch (error) {
