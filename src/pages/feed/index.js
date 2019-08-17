@@ -1,6 +1,6 @@
 import React, { Component } from  'react';
 import api from '../../services/api';
-import {getToken} from '../../services/auth';
+import {getToken, logout} from '../../services/auth';
 import Button from '../../components/Button';
 import Img from '../../components/Img';
 
@@ -46,14 +46,15 @@ export default class Feed extends Component {
             <React.Fragment>
                 <div className="container">
                     <div className="nav-menu">
-                        <nav>
+                        <div className='nav'>
                             <ul>
                                 <li><Button handleclick={this.changeCategory} label="Husky"    value="husky"/></li>
                                 <li><Button handleclick={this.changeCategory} label="Labrador" value="labrador"/></li>
                                 <li><Button handleclick={this.changeCategory} label="Hound"    value="hound"/></li>
                                 <li><Button handleclick={this.changeCategory} label="Pug"      value="pug"/></li>
+                                <li><Button handleclick={logout} label="Sair" value=""/></li>
                             </ul>
-                        </nav>
+                        </div>
                     </div>
                     <div>
                         <div className="row">

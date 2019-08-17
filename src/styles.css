@@ -29,3 +29,20 @@ body{
     margin: 0.5pt;
     padding: auto;
 }
+
+ul{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.nav{
+    width: 30%;
+    padding: auto;
+    margin: auto;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
