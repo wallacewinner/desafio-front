@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import api from '../../services/api';
-import {login} from '../../services/auth';
+import {login, isAuthenticated} from '../../services/auth';
 
 export default class Main extends Component {
     state = {
@@ -8,7 +8,8 @@ export default class Main extends Component {
     }
 
     componentDidMount() {
-
+        if(isAuthenticated())
+            window.location.href = '/feed';
     }    
 
     handleChange = event => {
