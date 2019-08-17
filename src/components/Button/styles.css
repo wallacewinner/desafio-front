@@ -1,10 +1,26 @@
-header#main-header{
-    height: 60px;
-    width: 100%;
-    background: #da552f;
-    font-size: 10px;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+button{
+    font-family: Arial;
+    color: #ffffff;
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    padding: 10px 5px 5px 10px;
+    text-decoration: none;    
+          
+}
+
+button:hover {
+    text-decoration: none;
+    display:inline-block;
+    border-bottom:3px solid #F2B33D;
+    padding-bottom:1px; 
+    cursor: pointer
+  }
+
+.active{
+    text-decoration: none;
+    display:inline-block;
+    border-bottom:3px solid #F2B33D;
+    padding-bottom:1px; 
+    cursor: pointer
 }

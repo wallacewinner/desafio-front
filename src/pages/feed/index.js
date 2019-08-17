@@ -48,10 +48,10 @@ export default class Feed extends Component {
                     <div className="nav-menu">
                         <nav>
                             <ul>
-                            <li><Button handleclick={this.changeCategory} label="Husky"    value="husky"/></li>
-                            <li><Button handleclick={this.changeCategory} label="Labrador" value="labrador"/></li>
-                            <li><Button handleclick={this.changeCategory} label="Hound"    value="hound"/></li>
-                            <li><Button handleclick={this.changeCategory} label="Pug"      value="pug"/></li>
+                                <li><Button handleclick={this.changeCategory} label="Husky"    value="husky"/></li>
+                                <li><Button handleclick={this.changeCategory} label="Labrador" value="labrador"/></li>
+                                <li><Button handleclick={this.changeCategory} label="Hound"    value="hound"/></li>
+                                <li><Button handleclick={this.changeCategory} label="Pug"      value="pug"/></li>
                             </ul>
                         </nav>
                     </div>

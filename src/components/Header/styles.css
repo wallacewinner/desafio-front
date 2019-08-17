@@ -1,8 +1,8 @@
 header#main-header{
-    height: 60px;
+    height: 80pt;
     width: 100%;
-    background: #da552f;
-    font-size: 10px;
+    background: rgba(0, 0, 0, 0.2);
+    font-size: 40px;
     font-weight: bold;
     display: flex;
     justify-content: center;
