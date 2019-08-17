@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
 import api from '../../services/api';
 import {login, isAuthenticated} from '../../services/auth';
+import Button from '../../components/Button'
 
 export default class Main extends Component {
+    constructor(props){
+        super(props);
+
+        this.state = {
+            labelText: '',
+        };
+    }
+
     state = {
         email: ''
     }
@@ -12,8 +21,13 @@ export default class Main extends Component {
             window.location.href = '/feed';
     }    
 
+
     handleChange = event => {
         this.setState({email: event.target.value});
+    }
+
+    teste = () => {
+        console.log('teste');
     }
 
     login = async (event) => {
@@ -23,7 +37,7 @@ export default class Main extends Component {
             if (response) {
                 login(response.data.user.token);
                 window.location.href = '/feed';
-                //redirectAuth();
+
             }
                         
         } catch (error) {
@@ -42,10 +56,12 @@ export default class Main extends Component {
     
     render(){
         return (
-            <form onSubmit={this.login} >
-                <input id='email' name='email' onChange={this.handleChange} />
-                <input type='submit' value='enviar' />
-            </form>
+            <React.Fragment>
+                <form onSubmit={this.login} >
+                    <input id='email' name='email' onChange={this.handleChange} />
+                    <Button handleclick={this.teste} label="Entrar"/>
+                </form>
+            </React.Fragment>
         )
     }
 }

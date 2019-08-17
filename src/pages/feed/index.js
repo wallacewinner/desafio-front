@@ -1,6 +1,7 @@
 import React, { Component } from  'react';
 import api from '../../services/api';
 import {getToken} from '../../services/auth';
+import Button from '../../components/Button';
 
 export default class Feed extends Component {
 
@@ -13,23 +14,18 @@ export default class Feed extends Component {
         this.getImages();
     }    
 
-    teste = () => {
-        console.log ('teste foi!!!');
+    setCategory = (category) => {
+        this.getImages(category);
     }
-
-    handleChange = event => {
-        this.setState({category: event.target.value});
-        this.getImages(event.target.value);
-    }
-
+    
     getImages = async (page="") => {
         try {
             const response = await api.get(`/feed?category=${page}`, {headers: {Authorization: getToken()}})
 
             this.setState({listImages: response.data.list});
-            this.setState({category: response.data.category});
-            console.log(this.state.category);
-            
+
+            console.log(page);            
+
         } catch (error) {
             if (error.response) {
                 // Request made and server responded
@@ -50,10 +46,10 @@ export default class Feed extends Component {
                 <div>
                     <nav>
                         <ul>
-                        <li><button onClick={this.handleChange} value='husky'>Husky</button></li>
-                        <li><button onClick={this.handleChange} value='labrador'>Labrador</button></li>
-                        <li><button onClick={this.handleChange} value='hound'>Hound</button></li>
-                        <li><button onClick={this.handleChange} value='pug'>Pug</button></li>
+                        <li><Button handleclick={this.setCategory} label="Husky"    value="husky"/></li>
+                        <li><Button handleclick={this.setCategory} label="Labrador" value="labrador"/></li>
+                        <li><Button handleclick={this.setCategory} label="Hound"    value="hound"/></li>
+                        <li><Button handleclick={this.setCategory} label="Pug"      value="pug"/></li>
                         </ul>
                     </nav>
                 </div>
