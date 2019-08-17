@@ -8,41 +8,16 @@
 body{
     font-family: Arial, Helvetica, sans-serif;
     background: #25282F;
-    color: #333333
+    color: #333333;
 }
 
 .container{
     width: 80%;
     padding: auto;
     margin: auto;
-    align-self: center;
+    display: flex;
     justify-content: center;
-    align-items: center;
-    align-content: center;
 }
 .row {
     display: flex;
-}
-  
-.column {
-    flex: 33.33%;
-    margin: 0.5pt;
-    padding: auto;
-}
-
-ul{
-    list-style: none;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-.nav{
-    width: 30%;
-    padding: auto;
-    margin: auto;
-    align-self: center;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
 }

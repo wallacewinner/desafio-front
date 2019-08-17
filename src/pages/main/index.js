@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import './styles.css';
 import api from '../../services/api';
 import {login, isAuthenticated} from '../../services/auth';
 
 export default class Main extends Component {
-    
+
     state = {
         email: ''
     }
@@ -46,10 +47,16 @@ export default class Main extends Component {
     render(){
         return (
             <React.Fragment>
-                <form onSubmit={this.login} >
-                    <input id='email' name='email' onChange={this.handleChange} />
-                </form>
-            </React.Fragment>
+                <div className="container">
+                    <div className="row">
+                        <div className="column">
+                            <form onSubmit={this.login} >
+                                <input id='email' name='email' onChange={this.handleChange} />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+             </React.Fragment>
         )
     }
 }

@@ -1,4 +1,5 @@
 import React, { Component } from  'react';
+import './styles.css';
 import api from '../../services/api';
 import {getToken, logout} from '../../services/auth';
 import Button from '../../components/Button';
@@ -12,11 +13,28 @@ export default class Feed extends Component {
     }
     
     componentDidMount() {
-        this.getImages();
+        this.getImages().then(
+            this.Nav()
+        );
     }    
 
     changeCategory = (category) => {
         this.getImages(category);
+    }
+
+    Nav = () => {
+        return(
+        <div className="row">
+        <div className="column">
+            <ul>
+                <li><Button handleclick={this.changeCategory} label="Husky"    value="husky"/></li>
+                <li><Button handleclick={this.changeCategory} label="Labrador" value="labrador"/></li>
+                <li><Button handleclick={this.changeCategory} label="Hound"    value="hound"/></li>
+                <li><Button handleclick={this.changeCategory} label="Pug"      value="pug"/></li>
+                <li><Button handleclick={logout} label="Sair" value=""/></li>
+            </ul>
+            </div>
+        </div>)
     }
 
     getImages = async (page="") => {
@@ -45,17 +63,7 @@ export default class Feed extends Component {
         return (
             <React.Fragment>
                 <div className="container">
-                    <div className="nav-menu">
-                        <div className='nav'>
-                            <ul>
-                                <li><Button handleclick={this.changeCategory} label="Husky"    value="husky"/></li>
-                                <li><Button handleclick={this.changeCategory} label="Labrador" value="labrador"/></li>
-                                <li><Button handleclick={this.changeCategory} label="Hound"    value="hound"/></li>
-                                <li><Button handleclick={this.changeCategory} label="Pug"      value="pug"/></li>
-                                <li><Button handleclick={logout} label="Sair" value=""/></li>
-                            </ul>
-                        </div>
-                    </div>
+                    {this.Nav()}
                     <div>
                         <div className="row">
                             <div className="column">
