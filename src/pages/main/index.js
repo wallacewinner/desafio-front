@@ -1,17 +1,9 @@
 import React, { Component } from 'react';
 import api from '../../services/api';
 import {login, isAuthenticated} from '../../services/auth';
-import Button from '../../components/Button'
 
 export default class Main extends Component {
-    constructor(props){
-        super(props);
-
-        this.state = {
-            labelText: '',
-        };
-    }
-
+    
     state = {
         email: ''
     }
@@ -23,15 +15,12 @@ export default class Main extends Component {
 
 
     handleChange = event => {
-        this.setState({email: event.target.value});
+        this.setState({email: event.target.value}, () => {
+            this.login();
+        });
     }
-
-    teste = () => {
-        console.log('teste');
-    }
-
-    login = async (event) => {
-        event.preventDefault();
+    
+    login = async () => {
         try {
             const response = await api.post('/signup',{ email: this.state.email });
             if (response) {
@@ -59,7 +48,6 @@ export default class Main extends Component {
             <React.Fragment>
                 <form onSubmit={this.login} >
                     <input id='email' name='email' onChange={this.handleChange} />
-                    <Button handleclick={this.teste} label="Entrar"/>
                 </form>
             </React.Fragment>
         )

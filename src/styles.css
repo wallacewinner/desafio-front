@@ -10,3 +10,22 @@ body{
     background: #fafafa;
     color: #333333
 }
+
+.container{
+    width: 80%;
+    padding: auto;
+    margin: auto;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+.row {
+    display: flex;
+}
+  
+.column {
+    flex: 33.33%;
+    margin: 0.5pt;
+    padding: auto;
+}

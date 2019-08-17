@@ -2,6 +2,7 @@ import React, { Component } from  'react';
 import api from '../../services/api';
 import {getToken} from '../../services/auth';
 import Button from '../../components/Button';
+import Img from '../../components/Img';
 
 export default class Feed extends Component {
 
@@ -14,10 +15,10 @@ export default class Feed extends Component {
         this.getImages();
     }    
 
-    setCategory = (category) => {
+    changeCategory = (category) => {
         this.getImages(category);
     }
-    
+
     getImages = async (page="") => {
         try {
             const response = await api.get(`/feed?category=${page}`, {headers: {Authorization: getToken()}})
@@ -43,21 +44,26 @@ export default class Feed extends Component {
     render(){
         return (
             <React.Fragment>
-                <div>
-                    <nav>
-                        <ul>
-                        <li><Button handleclick={this.setCategory} label="Husky"    value="husky"/></li>
-                        <li><Button handleclick={this.setCategory} label="Labrador" value="labrador"/></li>
-                        <li><Button handleclick={this.setCategory} label="Hound"    value="hound"/></li>
-                        <li><Button handleclick={this.setCategory} label="Pug"      value="pug"/></li>
-                        </ul>
-                    </nav>
-                </div>
-                <div className="image-list">
-                    {this.state.listImages.map((image, index) => (
-                        //<img key={index} src={image} />
-                        <input key={index} defaultValue={image} />
-                    ))}
+                <div className="container">
+                    <div className="nav-menu">
+                        <nav>
+                            <ul>
+                            <li><Button handleclick={this.changeCategory} label="Husky"    value="husky"/></li>
+                            <li><Button handleclick={this.changeCategory} label="Labrador" value="labrador"/></li>
+                            <li><Button handleclick={this.changeCategory} label="Hound"    value="hound"/></li>
+                            <li><Button handleclick={this.changeCategory} label="Pug"      value="pug"/></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div>
+                        <div className="row">
+                            <div className="column">
+                                {this.state.listImages.map((image, index) => (
+                                    <Img key={index} link={image}/>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </React.Fragment>
         )
