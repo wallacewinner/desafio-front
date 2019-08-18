@@ -19,8 +19,8 @@ const PrivateRoute = ({ component:Component,...rest}) => (
 const Routes = () => (
     <BrowserRouter>
         <Switch>
-            <Route exact path='/'         component={Main} />
-            <PrivateRoute path='/feed'    component={Feed} />
+            <Route exact path='/'          component={Main} />
+            <PrivateRoute path='/feed'     component={Feed} />
         </Switch>
     </BrowserRouter>
 );

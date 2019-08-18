@@ -9,7 +9,18 @@
     
 }
 
-.img-bw-4:hover{
+.img-teste{
+  width: 33.33%;
+  height: 180pt;
+  max-height: 180pt;
+  padding: 0.5pt 0.7pt 0.5pt auto ;
+  object-fit: cover;
+  -webkit-filter: grayscale(30%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+  
+}
+
+.img-selected{
   -webkit-transition: all .3s ease-in;
   -moz-transition: all .3s ease-in;
   -ms-transition: all .3s ease-in;
@@ -17,9 +28,10 @@
   transition: all .3s ease-in;
   transition-delay:0.5s;
   z-index: 100;
-  position: relative;
   opacity: 1;
   transform: scale(2);
   -ms-transform: scale(2); /* IE 9 */
   -webkit-transform: scale(2); /* Safari and Chrome */
-}
+  position: relative;
+  transform-origin: center;
+  }

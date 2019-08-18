@@ -10,6 +10,7 @@ export default class Feed extends Component {
     state = {
         listImages: [],
         responseInfo: {},
+        category: ""
     }
     
     componentDidMount() {
@@ -20,6 +21,12 @@ export default class Feed extends Component {
 
     changeCategory = (category) => {
         this.getImages(category);
+    }
+
+    alterStyle = () => {
+        console.log("ola")
+        var NAME = document.getElementById("img")
+        NAME.className="img-teste"
     }
 
     Nav = () => {
@@ -42,8 +49,9 @@ export default class Feed extends Component {
             const response = await api.get(`/feed?category=${page}`, {headers: {Authorization: getToken()}})
 
             this.setState({listImages: response.data.list});
+            this.setState({category: response.data.category});
 
-            console.log(page);            
+            console.log(response.data);            
 
         } catch (error) {
             if (error.response) {
@@ -68,7 +76,8 @@ export default class Feed extends Component {
                         <div className="row">
                             <div className="col-4">
                                 {this.state.listImages.map((image, index) => (
-                                    <Img key={index} link={image}/>
+                                    <Img key={index} uri={image} category={this.state.category} id={index}
+                                    />
                                 ))}
                             </div>
                         </div>

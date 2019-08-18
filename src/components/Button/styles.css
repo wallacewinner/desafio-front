@@ -17,7 +17,7 @@ button:hover {
     cursor: pointer
   }
 
-.active{
+button:active{
     text-decoration: none;
     display:inline-block;
     border-bottom:3px solid #F2B33D;
