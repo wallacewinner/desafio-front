@@ -1,7 +1,9 @@
 .img-bw-4{
     width: auto;
-    min-width: 377px;
+    min-width: 282pt;
+    max-width: 282pt;
     max-height: 180pt;
+    min-height: 180pt;
     margin: auto;
     object-fit: cover;
     -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */

@@ -6,7 +6,7 @@ export default class Button extends Component {
     return (
       <button 
         onClick={() => { this.props.handleclick(this.props.value)}}
-        value = {this.props.value}
+        value = {this.props.value} id = {this.props.value} 
       >
         {this.props.label}
       </button> 

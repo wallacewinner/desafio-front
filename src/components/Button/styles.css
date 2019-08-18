@@ -17,10 +17,12 @@ button:hover {
     cursor: pointer
   }
 
-button:active{
+.btn-active{
     text-decoration: none;
     display:inline-block;
     border-bottom:3px solid #F2B33D;
     padding-bottom:1px; 
     cursor: pointer
 }
+
+

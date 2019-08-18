@@ -52,7 +52,7 @@ export default class Main extends Component {
                     <div className="col-2">
                         <div className="content">
                             <div className="box">
-                                <img className = "img-2" src="https://gallery.yopriceville.com/var/albums/Free-Clipart-Pictures/Animals-PNG/Funny_Dog_Transparent_PNG_Clipart.png?m=1434276923"/>
+                                <img className = "img-2" alt="dog-orelhudo" src="https://gallery.yopriceville.com/var/albums/Free-Clipart-Pictures/Animals-PNG/Funny_Dog_Transparent_PNG_Clipart.png?m=1434276923"/>
                             </div>
                         </div>
                     </div>

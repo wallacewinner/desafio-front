@@ -12,17 +12,15 @@
     border-style: solid;
     border-width: medium;
     border-color: #F2B33D;
-    border-radius: 5px;
+    border-radius: 10px;
     width: 30%;
-    height: 70%;
+    min-height: 400pt;
+    max-height: 70%;
     margin: 5% 30% 0 0;
-}
+    object-fit: cover;
+    filter: grayscale(10%);
+  }
 
-.box:after{
-  content: "";
-  display: block;
-  padding-bottom: 100%;
-}
 
 .content {
     width: 100%;
@@ -30,13 +28,14 @@
     justify-content: center;
   }
 
-.img-2{
+.content .img-2{
     position: absolute;
     margin: 30% 30% 0% 0%;
     width: 150%;
+    min-width: 150%;
     height: auto;
     position: absolute;
-    filter: grayscale(70%);
+    filter: grayscale(20%);
   }
 
   input{
