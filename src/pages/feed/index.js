@@ -66,7 +66,7 @@ export default class Feed extends Component {
                     {this.Nav()}
                     <div>
                         <div className="row">
-                            <div className="column">
+                            <div className="col-4">
                                 {this.state.listImages.map((image, index) => (
                                     <Img key={index} link={image}/>
                                 ))}

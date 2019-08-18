@@ -1,3 +1,53 @@
-.column {
-    margin-left: 50%;
+.col-2 {
+    width: 50%;
+    min-height: 700px;
+    padding: auto;
+    margin: auto;
+    display: flex;
+    justify-content: center;
 }
+
+.box{
+    position: absolute;
+    border-style: solid;
+    border-width: medium;
+    border-color: #F2B33D;
+    border-radius: 5px;
+    width: 30%;
+    height: 70%;
+    margin: 5% 30% 0 0;
+}
+
+.box:after{
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+.content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .img-2{
+    position: absolute;
+    margin: 30% 30% 0% 0%;
+    width: 150%;
+    height: auto;
+    position: absolute;
+    filter: grayscale(70%);
+  }
+
+  input{
+    position: absolute;
+    margin: 20% 0% 0% -10%;
+    width: 20%;
+    font-size: 20px;
+    text-align: center;
+    background-color: #25282F;
+    height: auto;
+    padding:8px;
+    border:none;
+    border-bottom:3px solid #F2B33D;
+  }

@@ -48,13 +48,23 @@ export default class Main extends Component {
         return (
             <React.Fragment>
                 <div className="container">
-                    <div className="row">
-                        <div className="column">
+
+                    <div className="col-2">
+                        <div className="content">
+                            <div className="box">
+                                <img className = "img-2" src="https://gallery.yopriceville.com/var/albums/Free-Clipart-Pictures/Animals-PNG/Funny_Dog_Transparent_PNG_Clipart.png?m=1434276923"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="col-2">
+                        <div className="content">
                             <form onSubmit={this.login} >
-                                <input id='email' name='email' onChange={this.handleChange} />
+                                <input type="email" id='email' name='email' placeholder="Insira seu email" onChange={this.handleChange} />
                             </form>
                         </div>
                     </div>
+
                 </div>
              </React.Fragment>
         )
