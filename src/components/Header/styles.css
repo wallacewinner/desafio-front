@@ -1,10 +1,21 @@
 header#main-header{
-    height: 80pt;
+    height: 60pt;
     width: 100%;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.1);
+    color: #C5CAD9;
     font-size: 40px;
     font-weight: bold;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+}
+
+#img-header{
+    
+    margin: 0% 0% 0% 10%;
+    width: 60pt;
+    height: auto;
+    position: absolute;
+    filter: brightness(0) invert(1);
 }
