@@ -9,3 +9,13 @@ ul{
     flex-direction: row;
     flex-wrap: wrap;
 }
+
+.grid{
+    width: 100%;
+}
+
+.grid .row{
+    width: 33.33%;
+    float: left;
+    align-content: center;
+}

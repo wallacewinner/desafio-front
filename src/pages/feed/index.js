@@ -5,28 +5,28 @@ import {getToken, logout} from '../../services/auth';
 import Button from '../../components/Button';
 import Img from '../../components/Img';
 
+
 export default class Feed extends Component {
 
     state = {
         listImages: [],
         responseInfo: {},
-        category: ""
+        category: "husky"
     }
     
     componentDidMount() {
-        this.getImages().then(
-            this.Nav()
-        );
+        this.Nav();
+        this.getImages();
     }    
 
     changeCategory = (category) => {
-        this.getImages(category);
-    }
-
-    alterStyle = () => {
-        console.log("ola")
-        var NAME = document.getElementById("img")
-        NAME.className="img-teste"
+            document.getElementById(this.state.category).className="btn";
+        this.setState({category}, () => {
+            this.getImages(this.state.category);
+            document.getElementById(this.state.category).className="btn-active";
+        });
+       
+        
     }
 
     Nav = () => {
@@ -47,12 +47,8 @@ export default class Feed extends Component {
     getImages = async (page="") => {
         try {
             const response = await api.get(`/feed?category=${page}`, {headers: {Authorization: getToken()}})
-
             this.setState({listImages: response.data.list});
             this.setState({category: response.data.category});
-
-            console.log(response.data);            
-
         } catch (error) {
             if (error.response) {
                 // Request made and server responded
@@ -73,13 +69,13 @@ export default class Feed extends Component {
                 <div className="container">
                     {this.Nav()}
                     <div>
-                        <div className="row">
-                            <div className="col-4">
+                        <div className="grid">
+                            
                                 {this.state.listImages.map((image, index) => (
-                                    <Img key={index} uri={image} category={this.state.category} id={index}
-                                    />
+                                    <div key={index} className="row">
+                                    <Img  uri={image} category={this.state.category} id={index}/>
+                                    </div>
                                 ))}
-                            </div>
                         </div>
                     </div>
                 </div>
