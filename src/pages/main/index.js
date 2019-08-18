@@ -1,29 +1,35 @@
 import React, { Component } from 'react';
+import './styles.css';
 import api from '../../services/api';
+import {login, isAuthenticated} from '../../services/auth';
 
 export default class Main extends Component {
+
     state = {
-        email: '',
-        auth: false,
+        email: ''
     }
 
     componentDidMount() {
-        console.log (this.state.auth);
+        if(isAuthenticated())
+            window.location.href = '/feed';
     }    
 
-    handleChange = event => {
-        this.setState({email: event.target.value});
-    }
 
-    login = async (event) => {
-        event.preventDefault();
+    handleChange = event => {
+        this.setState({email: event.target.value}, () => {
+            this.login();
+        });
+    }
+    
+    login = async () => {
         try {
             const response = await api.post('/signup',{ email: this.state.email });
             if (response) {
-                this.setState({auth: true });
+                login(response.data.user.token);
+                window.location.href = '/feed';
+
             }
-            console.log(this.state.auth);
-            console.log(response.data);  
+                        
         } catch (error) {
             if (error.response) {
                 // Request made and server responded
@@ -40,10 +46,27 @@ export default class Main extends Component {
     
     render(){
         return (
-            <form onSubmit={this.login} >
-                <input id='email' name='email' onChange={this.handleChange} />
-                <input type='submit' value='enviar' />
-            </form>
+            <React.Fragment>
+                <div className="container">
+
+                    <div className="col-2">
+                        <div className="content">
+                            <div className="box">
+                                <img className = "img-2" src="https://gallery.yopriceville.com/var/albums/Free-Clipart-Pictures/Animals-PNG/Funny_Dog_Transparent_PNG_Clipart.png?m=1434276923"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="col-2">
+                        <div className="content">
+                            <form onSubmit={this.login} >
+                                <input type="email" id='email' name='email' placeholder="Insira seu email" onChange={this.handleChange} />
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+             </React.Fragment>
         )
     }
 }
