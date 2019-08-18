@@ -5,6 +5,7 @@ import {getToken, logout} from '../../services/auth';
 import Button from '../../components/Button';
 import Img from '../../components/Img';
 
+
 export default class Feed extends Component {
 
     state = {
@@ -73,13 +74,14 @@ export default class Feed extends Component {
                 <div className="container">
                     {this.Nav()}
                     <div>
-                        <div className="row">
-                            <div className="col-4">
+                        <div className="grid">
+                            
                                 {this.state.listImages.map((image, index) => (
+                                    <div className="row">
                                     <Img key={index} uri={image} category={this.state.category} id={index}
                                     />
+                                    </div>
                                 ))}
-                            </div>
                         </div>
                     </div>
                 </div>
