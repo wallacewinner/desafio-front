@@ -1,68 +1,65 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Desafio IDwall - Frontend
 
-## Available Scripts
+## Tela Signup
 
-In the project directory, you can run:
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/40737835/63648447-400f8180-c706-11e9-9a22-435bd01ff7bf.png">
 
-### `npm start`
+## Tela de Feed
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/40737835/63648412-ef982400-c705-11e9-9830-c59234811c23.png">
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
 
-### `npm test`
+## Objetivos do desafio
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Com este desafio, esperamos aprender os seguintes pontos sobre seu trabalho:
 
-### `npm run build`
+* Como é seu estilo de trabalho e código
+* Como é sua organização para o projeto
+* Qual é o seu estágio atual de conhecimento sobre as ferramentas requeridas
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Instruções
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+Esperamos que você crie uma aplicação que capture os dados da [API do IDdog](https://api-iddog.idwall.co), e apresente numa interface cumprindo os itens abaixo.
+**Dica:** Utilize o GIF da introdução como inspiração para as interações e etapas do desafio. Mas não precisa aplicar o mesmo estilo, sinta-se livre para criar como quiser.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Página de Signup
 
-### `npm run eject`
+* Crie uma página `/signup` com um campo de email, e autentique o usuário postando apenas seu email no [endpoint de autenticação](https://api-iddog.idwall.co/signup).
+* A chamada na API retornará um `token` JWT, que deverá ser armazenado para ser utilizada nas chamadas seguintes.
+* Após receber e armazenar o `token`, redirecione para a página de `/feed`. 
+* A página de `/signup/` é a única página de acesso público. As demais rotas são todas privadas e requerem o envio do token [conforme a documentação da API](https://github.com/idwall/desafios-iddog)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Página de Feed
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* No carregamento inicial da página de `/feed`, deverá ser feita uma chamada no [endpoint do feed](https://api-iddog.idwall.co/feed).
+* A página de `/feed` deverá ter um menu com quatro rotas - `husky`, `labrador`, `hound` e `pug`.
+* Cada rota, ao ser clicada, deve realizar uma chamada no [endpoint do feed](https://api-iddog.idwall.co/feed), passando a respectiva `category`. Quando não especificada, a `category` default é `husky`.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Página de Foto
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+* Ao clicar em uma foto, a URL da página deve ser atualizada para `/feed?category=X&id=Y`, sendo `id` o id da imagem recebido nas requisições anteriores.
+* A foto deverá ser ampliada e destacada dos demais itens da página, com um overlay. 
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Rodando este projeto
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+visando a intalação das bibliotecas execute em seu terminal:
 
-### Code Splitting
+```
+npm install
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+após sua conclusão rode o projeto com o seguinte comando em seu terminal:
 
-### Analyzing the Bundle Size
+ ```
+ npm start
+ 
+ ```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
 
-### Making a Progressive Web App
+tal projeto fica em modo de desenvolvimento.<br>
+Abra [http://localhost:3000](http://localhost:3000) para ver a aplicação em seu navegador.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+A página será carregada a cada atualização.<br>
+você consegue verificar qualquer erro que possa ocorrer em seu console.
 
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
